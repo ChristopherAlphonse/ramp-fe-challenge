@@ -8,13 +8,12 @@ export const InputCheckbox: InputCheckboxComponent = ({ id, checked = false, dis
   return (
     <div className="RampInputCheckbox--container">
       <label
-        htmlFor={inputId}
+        htmlFor={inputId} //Bug 2: Approve checkbox not working
         className={classNames("RampInputCheckbox--label", {
           "RampInputCheckbox--label-checked": checked,
           "RampInputCheckbox--label-disabled": disabled,
         })}
-      >
-      </label>
+      />
       <input
         id={inputId}
         type="checkbox"

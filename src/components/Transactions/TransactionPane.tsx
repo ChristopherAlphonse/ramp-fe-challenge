@@ -1,6 +1,6 @@
-import { useState } from "react"
 import { InputCheckbox } from "../InputCheckbox"
 import { TransactionPaneComponent } from "./types"
+import { useState } from "react"
 
 export const TransactionPane: TransactionPaneComponent = ({
   transaction,
@@ -18,6 +18,7 @@ export const TransactionPane: TransactionPaneComponent = ({
           {transaction.employee.firstName} {transaction.employee.lastName} - {transaction.date}
         </p>
       </div>
+      
       <InputCheckbox
         id={transaction.id}
         checked={approved}
