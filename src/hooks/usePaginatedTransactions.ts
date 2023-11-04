@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react"
 import { PaginatedRequestParams, PaginatedResponse, Transaction } from "../utils/types"
+import { useCallback, useState } from "react"
+
 import { PaginatedTransactionsResult } from "./types"
 import { useCustomFetch } from "./useCustomFetch"
 
@@ -21,8 +22,9 @@ export function usePaginatedTransactions(): PaginatedTransactionsResult {
       if (response === null || previousResponse === null) {
         return response
       }
+      const newData= paginatedTransactions?.data || [] // Bug 4: Clicking on View More button not showing correct data
 
-      return { data: response.data, nextPage: response.nextPage }
+      return { data:  [...newData, ...response.data], nextPage: response.nextPage }
     })
   }, [fetchWithCache, paginatedTransactions])
 
