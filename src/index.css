@@ -206,7 +206,3 @@ hr.RampBreak--l {
   justify-content: flex-end;
   gap: 0.75rem;
 }
-/* for view more */
-.active{
-  display: none;
-}

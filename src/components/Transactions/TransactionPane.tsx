@@ -1,5 +1,6 @@
 import { InputCheckbox } from "../InputCheckbox"
 import { TransactionPaneComponent } from "./types"
+import { useCustomFetch } from "../../hooks/useCustomFetch"
 import { useState } from "react"
 
 export const TransactionPane: TransactionPaneComponent = ({
@@ -8,6 +9,7 @@ export const TransactionPane: TransactionPaneComponent = ({
   setTransactionApproval: consumerSetTransactionApproval,
 }) => {
   const [approved, setApproved] = useState(transaction.approved)
+  const { clearCache } = useCustomFetch()
 
   return (
     <div className="RampPane">
@@ -28,7 +30,8 @@ export const TransactionPane: TransactionPaneComponent = ({
             transactionId: transaction.id,
             newValue,
           })
-
+// Bug 7: Approving a transaction won't persist the new value
+          clearCache()
           setApproved(newValue)
         }}
       />
